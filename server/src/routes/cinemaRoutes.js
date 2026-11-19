@@ -1,0 +1,1 @@
+// /api/cinemas routes
