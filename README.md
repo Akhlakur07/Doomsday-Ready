@@ -170,4 +170,4 @@ Because `client/` and `server/` are separate apps in one repository, import the 
 
 ## AI Tools Usage
 
-AI assistance (Antigravity) was used to scaffold the full-stack folder layout, draft boilerplate Express/React/Tailwind components, generate unit test suites covering the assessment scenarios, and draft documentation (`README.md`). All core algorithms for Feature 1 and Feature 2, validation rules, and edge-case tests were reviewed and verified locally.
+AI assistance was used to scaffold the full-stack folder layout, draft boilerplate Express/React/Tailwind components, generate unit test suites covering the assessment scenarios, and draft documentation (`README.md`). All core algorithms for Feature 1 and Feature 2, validation rules, and edge-case tests were reviewed and verified locally.
