@@ -124,6 +124,22 @@ npm test
 
 ---
 
+## Deploying to Vercel (Single Git Repository)
+
+Because `client/` and `server/` are separate apps in one repository, import the **same GitHub repository twice** on Vercel:
+
+1. **Allow Vercel IPs in MongoDB Atlas:** In MongoDB Atlas → **Network Access**, allow access from anywhere (`0.0.0.0/0`).
+2. **Deploy Backend (`server`) first:**
+   - Create a new Vercel project from this repo and set **Root Directory** to `server`.
+   - Add environment variables: `MONGO_URI`, `TMDB_ACCESS_TOKEN` (optional), and optionally `CLIENT_ORIGIN` once the frontend URL is ready.
+   - Deploy and copy the backend URL (e.g. `https://doomsday-ready-api.vercel.app`).
+3. **Deploy Frontend (`client`) second:**
+   - Import the same repo as a second Vercel project and set **Root Directory** to `client` (Framework Preset: **Vite**, Build Command: `npm run build`, Output Directory: `dist`).
+   - Add environment variable `VITE_API_URL=https://doomsday-ready-api.vercel.app/api`.
+   - Deploy (both `server/vercel.json` and `client/vercel.json` handle routing and SPA refresh rewrites automatically).
+
+---
+
 ## API Reference (`/api`)
 
 | Method & Path | Purpose |

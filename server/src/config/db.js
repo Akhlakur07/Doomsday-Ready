@@ -1,11 +1,17 @@
 const dns = require('dns');
 const mongoose = require('mongoose');
 
+let cachedPromise = null;
+
 /**
  * Connect to MongoDB using the MONGO_URI environment variable.
- * Falls back to public DNS servers if Windows Node defaults to loopback DNS for SRV lookups.
+ * Caches the connection promise so warm serverless invocations reuse the pool.
  */
 async function connectDB() {
+  if (mongoose.connection.readyState === 1) {
+    return mongoose.connection;
+  }
+
   const uri = process.env.MONGO_URI;
   if (!uri) {
     throw new Error('MONGO_URI environment variable is missing.');
@@ -31,8 +37,20 @@ async function connectDB() {
     // Ignore URL parse errors for non-standard connection strings
   }
 
-  await mongoose.connect(uri, options);
-  console.log('Connected to MongoDB');
+  if (!cachedPromise) {
+    cachedPromise = mongoose
+      .connect(uri, options)
+      .then(() => {
+        console.log('Connected to MongoDB');
+        return mongoose.connection;
+      })
+      .catch((err) => {
+        cachedPromise = null;
+        throw err;
+      });
+  }
+
+  return cachedPromise;
 }
 
 module.exports = { connectDB };
