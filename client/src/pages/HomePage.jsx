@@ -15,6 +15,7 @@ import { toast } from 'sonner';
 import { getCinemas, getMovies, getRewatchOrder } from '../api/client';
 import bannerBg from '../assets/banner_bg.png';
 import heroCharacter from '../assets/hero_character.png';
+import ComicShowcase from '../components/ComicShowcase';
 import DoomsdayCountdown from '../components/DoomsdayCountdown';
 import LoadingScreen from '../components/LoadingScreen';
 import { formatRuntime } from '../utils/formatters';
@@ -496,7 +497,10 @@ export default function HomePage() {
           </motion.div>
         </section>
 
-        {/* Section 5: Mission Quick-Launch Cards */}
+        {/* Section 5: Comic Panel Showcase */}
+        <ComicShowcase />
+
+        {/* Section 6: Mission Quick-Launch Cards */}
         <section className="grid gap-5 md:grid-cols-3">
           {[
             {

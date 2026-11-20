@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router';
 import Lenis from 'lenis';
 import { motion } from 'framer-motion';
-import { Menu, Shield, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Toaster } from 'sonner';
+import doomLogo from '../assets/logo.jfif';
 
 const NAV_ITEMS = [
   { to: '/', label: 'Home', end: true },
@@ -74,8 +75,12 @@ export default function Layout() {
             onClick={() => setMobileMenuOpen(false)}
             className="group flex items-center gap-2.5"
           >
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-emerald-400/40 bg-emerald-950/80 text-emerald-300 shadow-[0_0_18px_rgba(16,185,129,0.28)] transition group-hover:border-emerald-300 group-hover:shadow-[0_0_24px_rgba(16,185,129,0.45)]">
-              <Shield className="h-5 w-5" />
+            <div className="h-10 w-10 shrink-0 overflow-hidden rounded-full border border-emerald-400/50 bg-black shadow-[0_0_18px_rgba(16,185,129,0.32)] transition group-hover:border-emerald-300 group-hover:shadow-[0_0_24px_rgba(16,185,129,0.5)]">
+              <img
+                src={doomLogo}
+                alt="Doomsday Ready Crest"
+                className="h-full w-full scale-[1.22] object-cover"
+              />
             </div>
             <div>
               <span className="block font-display text-base font-extrabold tracking-[0.14em] text-white sm:text-lg">
@@ -171,9 +176,18 @@ export default function Layout() {
       {/* Subtle Footer */}
       <footer className="border-t border-emerald-500/15 bg-[#030605] py-6">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 text-xs text-slate-500 sm:px-6">
-          <p className="font-display tracking-wider text-slate-400">
-            DOOMSDAY <span className="text-emerald-400">READY</span>
-          </p>
+          <div className="flex items-center gap-2.5">
+            <div className="h-6 w-6 overflow-hidden rounded-full border border-emerald-500/40 bg-black">
+              <img
+                src={doomLogo}
+                alt="Doom Crest"
+                className="h-full w-full scale-[1.22] object-cover"
+              />
+            </div>
+            <p className="font-display tracking-wider text-slate-400">
+              DOOMSDAY <span className="text-emerald-400">READY</span>
+            </p>
+          </div>
           <p className="font-mono text-[11px] uppercase tracking-widest text-emerald-500/70">
             Avengers: Doomsday · December 18 · Rewatch &amp; Watch-Party Planner
           </p>

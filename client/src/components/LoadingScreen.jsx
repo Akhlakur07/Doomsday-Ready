@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Shield } from 'lucide-react';
+import doomLogo from '../assets/logo.jfif';
 
 export default function LoadingScreen({
   message = 'SYNCING SACRED TIMELINE...',
@@ -28,9 +28,13 @@ export default function LoadingScreen({
           <div className="absolute inset-0 rounded-full border-2 border-dashed border-emerald-400/50 animate-spin-slow" />
           {/* Inner counter-rotating arc ring */}
           <div className="absolute inset-2.5 rounded-full border-2 border-transparent border-t-emerald-400 border-r-emerald-500/50 animate-spin-reverse" />
-          {/* Pulsing Latverian shield core */}
-          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-emerald-400/40 bg-emerald-950/80 shadow-[0_0_24px_rgba(16,185,129,0.45)]">
-            <Shield className="h-6 w-6 text-emerald-300" />
+          {/* Pulsing Latverian crest core */}
+          <div className="h-14 w-14 overflow-hidden rounded-full border border-emerald-400/50 bg-black shadow-[0_0_24px_rgba(16,185,129,0.45)]">
+            <img
+              src={doomLogo}
+              alt="Doomsday Crest"
+              className="h-full w-full scale-[1.22] object-cover"
+            />
           </div>
         </div>
 

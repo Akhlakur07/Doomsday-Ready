@@ -50,7 +50,7 @@ export default function DoomsdayCountdown() {
         transition={{ duration: 0.55 }}
         className="relative mx-auto max-w-5xl px-4 text-center"
       >
-        <p className="font-sans text-xs font-bold uppercase tracking-[0.38em] text-white/95 drop-shadow sm:text-sm md:text-base">
+        <p className="font-display text-2xl font-bold tracking-[0.22em] text-white/95 drop-shadow sm:text-3xl">
           DOOMSDAY IS COMING
         </p>
 

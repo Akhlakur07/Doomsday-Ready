@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { deleteMovie, getMovies, updateMovie } from '../api/client';
+import comic1 from '../assets/comic1.jfif';
 import ConfirmDeleteModal from '../components/ConfirmDeleteModal';
 import DependencyGraph from '../components/DependencyGraph';
 import LoadingScreen from '../components/LoadingScreen';
@@ -194,32 +195,39 @@ export default function MoviesPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-emerald-400">
-            Sacred Timeline Vault
-          </span>
-          <h1 className="mt-1 font-display text-3xl font-bold tracking-wide text-white sm:text-4xl">
-            MCU Movies ({movies.length})
-          </h1>
-          <p className="mt-1 text-sm text-slate-400">
-            Manage posters, watched status, and prerequisites. Circular timelines
-            are blocked with{' '}
-            <code className="rounded border border-emerald-500/25 bg-black/50 px-1.5 py-0.5 font-mono text-xs text-emerald-300">
-              409 CIRCULAR_DEPENDENCY
-            </code>
-            .
-          </p>
-        </div>
+      <div className="doom-card relative overflow-hidden rounded-2xl p-6">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-cover bg-top opacity-25"
+          style={{ backgroundImage: `url(${comic1})` }}
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#060d09] via-[#060d09]/92 to-[#060d09]/35"
+        />
 
-        <button
-          type="button"
-          onClick={() => setShowAddForm((prev) => !prev)}
-          className="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-bold text-slate-950 shadow-[0_0_24px_rgba(16,185,129,0.35)] transition hover:bg-emerald-400"
-        >
-          <Plus className="h-4 w-4" />
-          {showAddForm ? 'Hide Add Form' : 'Add Movie'}
-        </button>
+        <div className="relative z-10 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-emerald-400">
+              Sacred Timeline Vault
+            </span>
+            <h1 className="mt-1 font-display text-3xl font-bold tracking-wide text-white sm:text-4xl">
+              MCU Movies ({movies.length})
+            </h1>
+            <p className="mt-1 text-sm text-slate-400">
+              Manage posters, watched status, and prerequisites
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setShowAddForm((prev) => !prev)}
+            className="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-bold text-slate-950 shadow-[0_0_24px_rgba(16,185,129,0.35)] transition hover:bg-emerald-400"
+          >
+            <Plus className="h-4 w-4" />
+            {showAddForm ? 'Hide Add Form' : 'Add Movie'}
+          </button>
+        </div>
       </div>
 
       {/* Collapsible Add Movie Form */}

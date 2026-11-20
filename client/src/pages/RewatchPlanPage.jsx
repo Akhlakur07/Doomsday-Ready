@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { getMovies, getRewatchOrder, updateMovie } from '../api/client';
+import comic2 from '../assets/comic2.jfif';
 import DependencyGraph from '../components/DependencyGraph';
 import LoadingScreen from '../components/LoadingScreen';
 import { formatRuntime } from '../utils/formatters';
@@ -154,28 +155,40 @@ export default function RewatchPlanPage() {
   return (
     <div className="space-y-6">
       {/* Page Heading */}
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-emerald-400">
-            Topological Timeline Solver
-          </span>
-          <h1 className="mt-1 font-display text-3xl font-bold tracking-wide text-white sm:text-4xl">
-            Rewatch Plan
-          </h1>
-          <p className="mt-1 text-sm text-slate-400">
-            Pick a target movie to reveal every prerequisite you must watch first,
-            sorted chronologically in valid dependency order.
-          </p>
-        </div>
+      <div className="doom-card relative overflow-hidden rounded-2xl p-6">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-cover bg-center opacity-25"
+          style={{ backgroundImage: `url(${comic2})` }}
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#060d09] via-[#060d09]/92 to-[#060d09]/40"
+        />
 
-        <button
-          type="button"
-          onClick={() => setShowGraph((prev) => !prev)}
-          className="inline-flex items-center gap-2 rounded-xl border border-emerald-500/35 bg-emerald-500/10 px-3.5 py-2 text-xs font-semibold text-emerald-300 transition hover:bg-emerald-500/20"
-        >
-          <GitBranch className="h-4 w-4" />
-          {showGraph ? 'Hide DAG Diagram' : 'Show DAG Diagram'}
-        </button>
+        <div className="relative z-10 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-emerald-400">
+              Topological Timeline Solver
+            </span>
+            <h1 className="mt-1 font-display text-3xl font-bold tracking-wide text-white sm:text-4xl">
+              Rewatch Plan
+            </h1>
+            <p className="mt-1 text-sm text-slate-400">
+              Pick a target movie to reveal every prerequisite you must watch first,
+              sorted chronologically in valid dependency order.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setShowGraph((prev) => !prev)}
+            className="inline-flex items-center gap-2 rounded-xl border border-emerald-500/35 bg-black/60 px-3.5 py-2 text-xs font-semibold text-emerald-300 backdrop-blur-sm transition hover:bg-emerald-500/20"
+          >
+            <GitBranch className="h-4 w-4" />
+            {showGraph ? 'Hide DAG Diagram' : 'Show DAG Diagram'}
+          </button>
+        </div>
       </div>
 
       {error && (

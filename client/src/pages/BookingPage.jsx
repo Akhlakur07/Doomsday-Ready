@@ -18,6 +18,7 @@ import {
   getBookingQuote,
   getCinemas,
 } from '../api/client';
+import comic1 from '../assets/comic1.jfif';
 import LoadingScreen from '../components/LoadingScreen';
 import SeatBundleVisualizer from '../components/SeatBundleVisualizer';
 
@@ -195,17 +196,29 @@ export default function BookingPage() {
   return (
     <div className="space-y-8">
       {/* Page Header */}
-      <div>
-        <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-emerald-400">
-          Dynamic Programming Optimizer
-        </span>
-        <h1 className="mt-1 font-display text-3xl font-bold tracking-wide text-white sm:text-4xl">
-          Watch-Party Booking
-        </h1>
-        <p className="mt-1 text-sm text-slate-400">
-          Select an opening-night cinema and group size (1–10,000) to calculate the
-          fewest seat bundles totaling the exact party size—with zero empty seats.
-        </p>
+      <div className="doom-card relative overflow-hidden rounded-2xl p-6">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-cover bg-top opacity-20"
+          style={{ backgroundImage: `url(${comic1})` }}
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#060d09] via-[#060d09]/92 to-[#060d09]/45"
+        />
+
+        <div className="relative z-10">
+          <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-emerald-400">
+            Dynamic Programming Optimizer
+          </span>
+          <h1 className="mt-1 font-display text-3xl font-bold tracking-wide text-white sm:text-4xl">
+            Watch-Party Booking
+          </h1>
+          <p className="mt-1 text-sm text-slate-400">
+            Select an opening-night cinema and group size (1–10,000) to calculate the
+            fewest seat bundles totaling the exact party size—with zero empty seats.
+          </p>
+        </div>
       </div>
 
       {error && (
