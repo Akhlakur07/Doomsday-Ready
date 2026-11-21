@@ -29,13 +29,13 @@ const ERAS = [
   },
   {
     id: 'infinity-climax',
-    label: 'Infinity Climax',
+    label: 'Infinity Saga',
     range: '2016 – 2019',
     match: (year) => year >= 2016 && year <= 2019,
   },
   {
     id: 'multiverse-saga',
-    label: 'Multiverse & Doomsday',
+    label: 'Multiverse Saga',
     range: '2020 – 2026+',
     match: (year) => year >= 2020,
   },
